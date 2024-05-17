@@ -1,7 +1,7 @@
 // Importando os módulos necessários
 const express = require('express');
 const mysql = require('mysql2');
-const cors = require('cors'); // Adicionando CORS
+const cors = require('cors');
 
 // Criando o servidor Express
 const app = express();
@@ -30,15 +30,21 @@ db.connect((err) => {
 
 // Rota para buscar todos os adotantes
 app.get('/adotante', (req, res) => {
+  console.log('Recebida requisição GET para buscar todos os adotantes');
   let sql = 'SELECT * FROM adotante';
   db.query(sql, (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.error('Erro ao buscar adotantes:', err);
+      throw err;
+    }
+    console.log('Adotantes encontrados:', results);
     res.send(results);
   });
 });
 
 // Rota para inserir um novo adotante
 app.post('/adotante', (req, res) => {
+  console.log('Recebida requisição POST para inserir um novo adotante:', req.body);
   let sql = 'INSERT INTO adotante SET ?';
   let data = {
     matricula: req.body.matricula,
@@ -56,27 +62,47 @@ app.post('/adotante', (req, res) => {
     enderecoComplemento: req.body.enderecoComplemento
   };
   db.query(sql, data, (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.error('Erro ao inserir adotante:', err);
+      throw err;
+    }
+    console.log('Adotante inserido com sucesso:', results);
     res.send(results);
   });
 });
 
 // Rota para atualizar um adotante existente
 app.put('/adotante/:cpf', (req, res) => {
+  console.log('Recebida requisição PUT para atualizar adotante:', req.params.cpf, req.body);
   let sql = 'UPDATE adotante SET ? WHERE cpf = ?';
   let data = [req.body, req.params.cpf];
   db.query(sql, data, (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.error('Erro ao atualizar adotante:', err);
+      throw err;
+    }
+    console.log('Adotante atualizado com sucesso:', results);
     res.send(results);
   });
 });
 
 // Rota para excluir um adotante
 app.delete('/adotante/:cpf', (req, res) => {
+  console.log('Recebida requisição DELETE para excluir adotante:', req.params.cpf);
   let sql = 'DELETE FROM adotante WHERE cpf = ?';
   db.query(sql, req.params.cpf, (err, results) => {
-    if (err) throw err;
-    res.send(results);
+    if (err) {
+      console.error('Erro ao excluir adotante:', err);
+      res.status(500).send({ message: 'Erro ao excluir adotante' });
+      return;
+    }
+    if (results.affectedRows === 0) {
+      console.log('Adotante não encontrado:', req.params.cpf);
+      res.status(404).send({ message: 'Adotante não encontrado' });
+    } else {
+      console.log('Adotante excluído com sucesso:', results);
+      res.send({ message: 'Adotante excluído com sucesso' });
+    }
   });
 });
 
