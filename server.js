@@ -1,4 +1,3 @@
-// Importando os módulos necessários
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -23,6 +22,7 @@ const db = mysql.createConnection({
 // Conectando ao banco de dados
 db.connect((err) => {
   if (err) {
+    console.error('Erro ao conectar ao banco de dados:', err);
     throw err;
   }
   console.log('Conectado ao banco de dados');
@@ -35,7 +35,8 @@ app.get('/adotante', (req, res) => {
   db.query(sql, (err, results) => {
     if (err) {
       console.error('Erro ao buscar adotantes:', err);
-      throw err;
+      res.status(500).send({ message: 'Erro ao buscar adotantes' });
+      return;
     }
     console.log('Adotantes encontrados:', results);
     res.send(results);
@@ -46,25 +47,30 @@ app.get('/adotante', (req, res) => {
 app.post('/adotante', (req, res) => {
   console.log('Recebida requisição POST para inserir um novo adotante:', req.body);
   let sql = 'INSERT INTO adotante SET ?';
+  
   let data = {
     matricula: req.body.matricula,
     nome: req.body.nome,
     telefone: req.body.telefone,
     email: req.body.email,
     cpf: req.body.cpf,
-    estadoCivil: req.body.estadoCivil,
-    enderecoCEP: req.body.enderecoCEP,
-    enderecoLogradouro: req.body.enderecoLogradouro,
-    enderecoNumero: req.body.enderecoNumero,
-    enderecoBairro: req.body.enderecoBairro,
-    enderecoCidade: req.body.enderecoCidade,
-    enderecoEstado: req.body.enderecoEstado,
-    enderecoComplemento: req.body.enderecoComplemento
+    estadoCivil: req.body.estadoCivil, // Corrigido aqui
+    cep: req.body.cep,
+    logradouro: req.body.logradouro,
+    numero: req.body.numero,
+    bairro: req.body.bairro,
+    cidade: req.body.cidade,
+    estado: req.body.estado,
+    complemento: req.body.complemento
   };
+
+  console.log('Dados que serão inseridos no banco:', data);
+
   db.query(sql, data, (err, results) => {
     if (err) {
       console.error('Erro ao inserir adotante:', err);
-      throw err;
+      res.status(500).send({ message: 'Erro ao inserir adotante' });
+      return;
     }
     console.log('Adotante inserido com sucesso:', results);
     res.send(results);
@@ -79,7 +85,8 @@ app.put('/adotante/:cpf', (req, res) => {
   db.query(sql, data, (err, results) => {
     if (err) {
       console.error('Erro ao atualizar adotante:', err);
-      throw err;
+      res.status(500).send({ message: 'Erro ao atualizar adotante' });
+      return;
     }
     console.log('Adotante atualizado com sucesso:', results);
     res.send(results);
