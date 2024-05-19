@@ -28,7 +28,9 @@ db.connect((err) => {
   console.log('Conectado ao banco de dados');
 });
 
-// Rota para buscar todos os adotantes
+// Rotas para `adotante`
+
+// Buscar todos os adotantes
 app.get('/adotante', (req, res) => {
   console.log('Recebida requisição GET para buscar todos os adotantes');
   let sql = 'SELECT * FROM adotante';
@@ -43,7 +45,7 @@ app.get('/adotante', (req, res) => {
   });
 });
 
-// Rota para inserir um novo adotante
+// Inserir um novo adotante
 app.post('/adotante', (req, res) => {
   console.log('Recebida requisição POST para inserir um novo adotante:', req.body);
   let sql = 'INSERT INTO adotante SET ?';
@@ -54,7 +56,7 @@ app.post('/adotante', (req, res) => {
     telefone: req.body.telefone,
     email: req.body.email,
     cpf: req.body.cpf,
-    estadoCivil: req.body.estadoCivil, // Corrigido aqui
+    estadoCivil: req.body.estadoCivil,
     cep: req.body.cep,
     logradouro: req.body.logradouro,
     numero: req.body.numero,
@@ -77,7 +79,7 @@ app.post('/adotante', (req, res) => {
   });
 });
 
-// Rota para atualizar um adotante existente
+// Atualizar um adotante existente
 app.put('/adotante/:cpf', (req, res) => {
   console.log('Recebida requisição PUT para atualizar adotante:', req.params.cpf, req.body);
   let sql = 'UPDATE adotante SET ? WHERE cpf = ?';
@@ -93,7 +95,7 @@ app.put('/adotante/:cpf', (req, res) => {
   });
 });
 
-// Rota para excluir um adotante
+// Excluir um adotante
 app.delete('/adotante/:cpf', (req, res) => {
   console.log('Recebida requisição DELETE para excluir adotante:', req.params.cpf);
   let sql = 'DELETE FROM adotante WHERE cpf = ?';
@@ -109,6 +111,95 @@ app.delete('/adotante/:cpf', (req, res) => {
     } else {
       console.log('Adotante excluído com sucesso:', results);
       res.send({ message: 'Adotante excluído com sucesso' });
+    }
+  });
+});
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+// Rotas para `animal`
+
+// Buscar todos os animais
+app.get('/animal', (req, res) => {
+  console.log('Recebida requisição GET para buscar todos os animais');
+  let sql = 'SELECT * FROM animal';
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error('Erro ao buscar animais:', err);
+      res.status(500).send({ message: 'Erro ao buscar animais' });
+      return;
+    }
+    console.log('Animais encontrados:', results);
+    res.send(results);
+  });
+});
+
+// Inserir um novo animal
+app.post('/animal', (req, res) => {
+  console.log('Recebida requisição POST para inserir um novo animal:', req.body);
+  let sql = 'INSERT INTO animal SET ?';
+  
+  let data = {
+    matricula: req.body.matricula,
+    nome: req.body.nome,
+    especie: req.body.especie,
+    pelagem: req.body.pelagem,
+    raca: req.body.raca,
+    sexo: req.body.sexo,
+    idade: req.body.idade,
+    castracao: req.body.castracao,
+    vacinacao: req.body.vacinacao,
+    localResgate: req.body.localResgate,
+    observacao: req.body.observacao,
+    status: req.body.status,
+    imagem: req.body.imagem
+  };
+
+  console.log('Dados que serão inseridos no banco:', data);
+
+  db.query(sql, data, (err, results) => {
+    if (err) {
+      console.error('Erro ao inserir animal:', err);
+      res.status(500).send({ message: 'Erro ao inserir animal' });
+      return;
+    }
+    console.log('Animal inserido com sucesso:', results);
+    res.send(results);
+  });
+});
+
+// Atualizar um animal existente
+app.put('/animal/:matricula', (req, res) => {
+  console.log('Recebida requisição PUT para atualizar animal:', req.params.matricula, req.body);
+  let sql = 'UPDATE animal SET ? WHERE matricula = ?';
+  let data = [req.body, req.params.matricula];
+  db.query(sql, data, (err, results) => {
+    if (err) {
+      console.error('Erro ao atualizar animal:', err);
+      res.status(500).send({ message: 'Erro ao atualizar animal' });
+      return;
+    }
+    console.log('Animal atualizado com sucesso:', results);
+    res.send(results);
+  });
+});
+
+// Excluir um animal
+app.delete('/animal/:matricula', (req, res) => {
+  console.log('Recebida requisição DELETE para excluir animal:', req.params.matricula);
+  let sql = 'DELETE FROM animal WHERE matricula = ?';
+  db.query(sql, req.params.matricula, (err, results) => {
+    if (err) {
+      console.error('Erro ao excluir animal:', err);
+      res.status(500).send({ message: 'Erro ao excluir animal' });
+      return;
+    }
+    if (results.affectedRows === 0) {
+      console.log('Animal não encontrado:', req.params.matricula);
+      res.status(404).send({ message: 'Animal não encontrado' });
+    } else {
+      console.log('Animal excluído com sucesso:', results);
+      res.send({ message: 'Animal excluído com sucesso' });
     }
   });
 });
