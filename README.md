@@ -62,7 +62,7 @@ Sistema de gerenciamento de banco de dados relacional.<br>
 *****
 # :large_orange_diamond: Como executar o Backend: :bulb:
 
-##  :flashlight: Front end : :octocat: https://github.com/kenpsrossi/AngularLab
+##  :flashlight: Front end : :octocat: https://github.com/kenpsrossi/Backend-JS
 - Pré-requisitos : 
 
 ```bash
