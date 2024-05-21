@@ -53,7 +53,7 @@ Sistema de gerenciamento de banco de dados relacional.<br>
 
 *****
 #  :large_orange_diamond: Layout do Código : :notebook_with_decorative_cover:
-![ezgif com-animated-gif-maker (5)](https://github.com/kenpsrossi/estrutura_dados_cpp/assets/102131657/05b953c8-0267-4192-8e1c-85c355c365b2)
+![ezgif com-animated-gif-maker (6)](https://github.com/kenpsrossi/Readme-para-projeto-Codigo-do-Futuro-Radar-API/assets/102131657/944c9137-cd48-4402-bcac-1796d9f1af0e)
 *****
 
 # :large_orange_diamond: Como executar o Backend: :bulb:
