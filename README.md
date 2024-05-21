@@ -1,4 +1,4 @@
-# Back-end do Projeto PetGuardian   
+# Backend do Projeto PetGuardian   
 
 <br>
  <h1 align="left"> :large_orange_diamond: Olá <img src="https://raw.githubusercontent.com/kaueMarques/kaueMarques/master/hi.gif" height="30px"></h1>
@@ -9,7 +9,7 @@
 
 Dispõe das seguintes funcionalidades:
 
-| :small_orange_diamond: :small_orange_diamond: :large_orange_diamond:  Backend :large_orange_diamond: :small_orange_diamond: :small_orange_diamond:| :small_orange_diamond: Pagina Login ;  :white_check_mark:
+| :small_orange_diamond: :small_orange_diamond: :large_orange_diamond:  Backend :large_orange_diamond: :small_orange_diamond: :small_orange_diamond:| :small_orange_diamond: Pagina Login 
 |:--------------|:-----
 | :small_orange_diamond: Página Cadastro de Adotantes ; :white_check_mark: | :small_orange_diamond: Página Cadastro de Animais ; :white_check_mark:
 | |    
@@ -18,11 +18,17 @@ Dispõe das seguintes funcionalidades:
 *****
 
 # :large_orange_diamond: Tecnologias Utilizadas
-Node.js: Ambiente de execução para JavaScript no servidor.<br>
-Express: Framework web para Node.js que simplifica a criação de servidores HTTP.<br>
-MySQL: Sistema de gerenciamento de banco de dados relacional.<br>
-cors: Middleware para habilitar CORS (Cross-Origin Resource Sharing).<br>
-mysql2: Cliente MySQL para Node.js.<br>
+🔸 **JavaScript**  <img align="center" alt="Js" height="30" width="30" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/javascript-2752148-2284965.png?f=webp&w=256"> 
+Linguagem de programação utilizada para escrever o código do servidor.<br>
+
+🔸 **Node.js**  <img align="center" alt="Js" height="70" width="70" src="https://cdn.iconscout.com/icon/free/png-512/free-node-js-2-1174936.png?f=webp&w=256">
+Ambiente de execução para JavaScript no servidor.<br>
+ 
+🔸 **Express** <img align="center" alt="Js" height="40" width="40" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/express-js-11217675-9200670.png?f=webp&w=256">
+Framework web para Node.js que simplifica a criação de servidores HTTP.<br>
+
+🔸 **Banco de dados MySQL** <img align="center" alt="Js" height="60" width="60" src="https://cdn.iconscout.com/icon/free/png-512/free-mysql-3521596-2945040.png?f=webp&w=256">
+Sistema de gerenciamento de banco de dados relacional.<br>
 
 *****
 
@@ -34,17 +40,17 @@ mysql2: Cliente MySQL para Node.js.<br>
 
 *****
 # :large_orange_diamond: Rotas Disponíveis<br>
-### :large_orange_diamond: Adotante <br>
-##### :small_orange_diamond: GET /adotante: Busca todos os adotantes.<br>
-##### :small_orange_diamond: POST /adotante: Insere um novo adotante.<br>
-##### :small_orange_diamond: PUT /adotante/:cpf: Atualiza um adotante existente.<br>
-##### :small_orange_diamond: DELETE /adotante/:cpf: Exclui um adotante.<br>
+### :large_orange_diamond: Adotante                                                                                                               
+* GET /adotante: Busca todos os adotantes.<br>
+* POST /adotante: Insere um novo adotante.<br>
+* PUT /adotante/:cpf: Atualiza um adotante existente.<br>
+* DELETE /adotante/:cpf: Exclui um adotante.<br>
 
 ### :large_orange_diamond: Animal<br>
-##### :small_orange_diamond: GET /animal: Busca todos os animais.<br>
-##### :small_orange_diamond: POST /animal: Insere um novo animal.<br>
-##### :small_orange_diamond: PUT /animal/:matricula: Atualiza um animal existente.<br>
-##### :small_orange_diamond: DELETE /animal/:matricula: Exclui um animal.<br>
+* GET /animal: Busca todos os animais.<br>
+* POST /animal: Insere um novo animal.<br>
+* PUT /animal/:matricula: Atualiza um animal existente.<br>
+* DELETE /animal/:matricula: Exclui um animal.<br>
 
 
 *****
@@ -53,16 +59,8 @@ mysql2: Cliente MySQL para Node.js.<br>
 
 *****
 
-
-
-     
 *****
-##  :large_orange_diamond: Tecnologias utilizadas : :calling:
-| 🔸 **HTML** <img align="center" alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"> | :small_orange_diamond: **CSS** <img align="center" alt="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"> | 🔸 **TypeScript** <img align="center" alt="Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg"> |🔸 **Angular** <img align="center" alt="Js" height="30" width="40" src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/21_Angular_logo_logos-512.png">  |
-|:----- |:----- |:----- |:----- |
-
-*****
-# :large_orange_diamond: Como executar o Front end : :bulb:
+# :large_orange_diamond: Como executar o Backend: :bulb:
 
 ##  :flashlight: Front end : :octocat: https://github.com/kenpsrossi/AngularLab
 - Pré-requisitos : 
