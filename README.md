@@ -37,7 +37,6 @@ Sistema de gerenciamento de banco de dados relacional.<br>
 ###  :small_orange_diamond: MySQL instalado e configurado.<br>
 ###  :small_orange_diamond: Banco de dados petguardian com as tabelas adotante e animal criadas.<br>
 
-
 *****
 # :large_orange_diamond: Rotas Disponíveis<br>
 ### :large_orange_diamond: Adotante                                                                                                               
@@ -52,29 +51,29 @@ Sistema de gerenciamento de banco de dados relacional.<br>
 * PUT /animal/:matricula: Atualiza um animal existente.<br>
 * DELETE /animal/:matricula: Exclui um animal.<br>
 
-
 *****
 #  :large_orange_diamond: Layout do Código : :notebook_with_decorative_cover:
 ![ezgif com-animated-gif-maker (3)](https://github.com/kenpsrossi/test_co/assets/102131657/59fb82eb-21ca-4492-bfb6-1a957439f15b)
 
 *****
 
-*****
 # :large_orange_diamond: Como executar o Backend: :bulb:
 
 ##  :flashlight: Front end : :octocat: https://github.com/kenpsrossi/Backend-JS
 - Pré-requisitos : 
 
 ```bash
-# clonar repositório
-https://github.com/kenpsrossi/AngularLab.git
+# Clonar repositório
+https://github.com/kenpsrossi/Backend-JS.git
 
-# entrar na pasta do projeto projeto-Radar-angular
+# Entrar na pasta do projeto 
 
-# instalar dependências
+# Instalar dependências
 npm install
 
-# executar o projeto
-ng serve
+# Inicie o servidor
+node app.js
+
+O servidor estará rodando na porta 3000.
 
 ```
