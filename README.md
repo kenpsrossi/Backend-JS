@@ -70,7 +70,7 @@ https://github.com/kenpsrossi/Backend-JS.git
 # Instalar dependências
 npm install
 
-# Inicie o servidor
+# Iniciar o servidor
 node app.js
 
 O servidor estará rodando na porta 3000.
